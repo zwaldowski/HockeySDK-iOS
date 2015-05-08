@@ -358,7 +358,7 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
  *
  *	@return XML structure with the app specific UUIDs
  */
-- (NSString *) extractAppUUIDs:(BITPLCrashReport *)report {
+- (NSString *) extractAppUUIDs:(PLCrashReport *)report {
   NSMutableString *uuidString = [NSMutableString string];
   NSArray *uuidArray = [BITCrashReportTextFormatter arrayOfAppUUIDsForCrashReport:report];
   
@@ -786,7 +786,7 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
       BITHockeyLog(@"ERROR: Could not load crash report: %@", error);
     } else {
       // get the startup timestamp from the crash report, and the file timestamp to calculate the timeinterval when the crash happened after startup
-      BITPLCrashReport *report = [[BITPLCrashReport alloc] initWithData:crashData error:&error];
+      PLCrashReport *report = [[PLCrashReport alloc] initWithData:crashData error:&error];
       
       if (report == nil) {
         BITHockeyLog(@"WARNING: Could not parse crash report");
@@ -1017,9 +1017,9 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
         symbolicationStrategy = PLCrashReporterSymbolicationStrategyAll;
       }
       
-      BITPLCrashReporterConfig *config = [[BITPLCrashReporterConfig alloc] initWithSignalHandlerType: signalHandlerType
+      PLCrashReporterConfig *config = [[PLCrashReporterConfig alloc] initWithSignalHandlerType: signalHandlerType
                                                                                symbolicationStrategy: symbolicationStrategy];
-      self.plCrashReporter = [[BITPLCrashReporter alloc] initWithConfiguration: config];
+      self.plCrashReporter = [[PLCrashReporter alloc] initWithConfiguration: config];
       
       // Check if we previously crashed
       if ([self.plCrashReporter hasPendingCrashReport]) {
@@ -1235,7 +1235,7 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
   NSData *crashData = [NSData dataWithContentsOfFile:filename];
   
   if ([crashData length] > 0) {
-    BITPLCrashReport *report = nil;
+    PLCrashReport *report = nil;
     NSString *crashUUID = @"";
     NSString *installString = nil;
     NSString *crashLogString = nil;
@@ -1269,7 +1269,7 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
       }
       
     } else {
-      report = [[BITPLCrashReport alloc] initWithData:crashData error:&error];
+      report = [[PLCrashReport alloc] initWithData:crashData error:&error];
     }
     
     if (report == nil && crashLogString == nil) {
