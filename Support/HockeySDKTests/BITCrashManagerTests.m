@@ -96,7 +96,7 @@
 
 - (void)testPersistAttachment {
   NSString *filename = @"TestAttachment";
-  NSData *data = [[NSData alloc] initWithBase64Encoding:@"TestData"];
+  NSData *data = [[NSData alloc] initWithBase64EncodedString:@"TestData" options:0];
   NSString* type = @"text/plain";
   
   BITHockeyAttachment *originalAttachment = [[BITHockeyAttachment alloc] initWithFilename:filename hockeyAttachmentData:data contentType:type];
