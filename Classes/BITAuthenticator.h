@@ -349,7 +349,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  *
  * @param completion Block being executed once validation completed
  */
-- (void) validateWithCompletion:(void(^)(BOOL validated, NSError *__nullable error)) completion;
+- (void) validateWithCompletion:(void(^__nullable)(BOOL validated, NSError *__nullable error)) completion;
 
 /**
  * Indicates if this installation is validated.
