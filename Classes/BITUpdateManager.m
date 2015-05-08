@@ -220,7 +220,7 @@ typedef NS_ENUM(NSInteger, BITUpdateAlertViewTag) {
     NSString *appName = bit_appName(BITHockeyLocalizedString(@"HockeyAppNamePlaceholder"));
     if (!_blockingScreenMessage)
       _blockingScreenMessage = [NSString stringWithFormat:BITHockeyLocalizedString(@"UpdateExpired"), appName];
-    [self showBlockingScreen:_blockingScreenMessage image:@"authorize_denied.png"];
+    [self showBlockingScreen:_blockingScreenMessage image:@"authorize_denied"];
 
     if (self.delegate != nil && [self.delegate respondsToSelector:@selector(didDisplayExpiryAlertForUpdateManager:)]) {
       [self.delegate didDisplayExpiryAlertForUpdateManager:self];
@@ -561,13 +561,13 @@ typedef NS_ENUM(NSInteger, BITUpdateAlertViewTag) {
   CGRect frame = [visibleWindow frame];
   
   self.blockingView = [[UIView alloc] initWithFrame:frame];
-  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:bit_imageNamed(@"bg.png", BITHOCKEYSDK_BUNDLE)];
+  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:bit_imageNamed(@"bg")];
   backgroundView.contentMode = UIViewContentModeScaleAspectFill;
   backgroundView.frame = frame;
   [self.blockingView addSubview:backgroundView];
   
   if (image != nil) {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:bit_imageNamed(image, BITHOCKEYSDK_BUNDLE)];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:bit_imageNamed(image)];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.frame = frame;
     [self.blockingView addSubview:imageView];

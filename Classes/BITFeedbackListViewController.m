@@ -524,8 +524,8 @@
     if ([self.manager isPreiOS7Environment]) {
       button = [UIButton buttonWithType:UIButtonTypeCustom];
       button.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-      UIImage *stretchableButton = [bit_imageNamed(@"buttonRoundedRegular.png", BITHOCKEYSDK_BUNDLE) stretchableImageWithLeftCapWidth:10 topCapHeight:0];
-      UIImage *stretchableHighlightedButton = [bit_imageNamed(@"buttonRoundedRegularHighlighted.png", BITHOCKEYSDK_BUNDLE) stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+      UIImage *stretchableButton = [bit_imageNamed(@"buttonRoundedRegular") stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+      UIImage *stretchableHighlightedButton = [bit_imageNamed(@"buttonRoundedRegularHighlighted") stretchableImageWithLeftCapWidth:10 topCapHeight:0];
       [button setBackgroundImage:stretchableButton forState:UIControlStateNormal];
       [button setBackgroundImage:stretchableHighlightedButton forState:UIControlStateHighlighted];
       
@@ -564,8 +564,8 @@
       topGap = 0.0f;
       if ([self.manager isPreiOS7Environment]) {
         [[button titleLabel] setShadowOffset:CGSizeMake(0, -1)];
-        UIImage *stretchableDeleteButton = [bit_imageNamed(@"buttonRoundedDelete.png", BITHOCKEYSDK_BUNDLE) stretchableImageWithLeftCapWidth:10 topCapHeight:0];
-        UIImage *stretchableDeleteHighlightedButton = [bit_imageNamed(@"buttonRoundedDeleteHighlighted.png", BITHOCKEYSDK_BUNDLE) stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+        UIImage *stretchableDeleteButton = [bit_imageNamed(@"buttonRoundedDelete") stretchableImageWithLeftCapWidth:10 topCapHeight:0];
+        UIImage *stretchableDeleteHighlightedButton = [bit_imageNamed(@"buttonRoundedDeleteHighlighted") stretchableImageWithLeftCapWidth:10 topCapHeight:0];
         [button setBackgroundImage:stretchableDeleteButton forState:UIControlStateNormal];
         [button setBackgroundImage:stretchableDeleteHighlightedButton forState:UIControlStateHighlighted];
         

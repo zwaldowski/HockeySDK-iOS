@@ -101,7 +101,7 @@
   UIGraphicsBeginImageContextWithOptions(image.size, NO, 0.0);
   
   [image drawAtPoint:CGPointZero];
-  UIImage *iconGradient = bit_imageNamed(@"IconGradient.png", BITHOCKEYSDK_BUNDLE);
+  UIImage *iconGradient = bit_imageNamed(@"IconGradient");
   [iconGradient drawInRect:CGRectMake(0, 0, image.size.width, image.size.height) blendMode:kCGBlendModeNormal alpha:0.5];
   
   UIImage *result = UIGraphicsGetImageFromCurrentImageContext();

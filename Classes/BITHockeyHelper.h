@@ -58,8 +58,6 @@ UIImage *bit_roundedCornerImage(UIImage *inputImage, NSInteger cornerSize, NSInt
 UIImage *bit_imageToFitSize(UIImage *inputImage, CGSize fitSize, BOOL honorScaleFactor);
 UIImage *bit_reflectedImageWithHeight(UIImage *inputImage, NSUInteger height, float fromAlpha, float toAlpha);
 
-UIImage *bit_newWithContentsOfResolutionIndependentFile(NSString * path);
-UIImage *bit_imageWithContentsOfResolutionIndependentFile(NSString * path);
-UIImage *bit_imageNamed(NSString *imageName, NSString *bundleName);
+UIImage *bit_imageNamed(NSString *imageName);
 UIImage *bit_screenshot(void);
 UIImage *bit_appIcon(void);

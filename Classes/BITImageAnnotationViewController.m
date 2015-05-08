@@ -70,13 +70,12 @@ typedef NS_ENUM(NSInteger, BITImageAnnotationViewControllerInteractionMode) {
   
   self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
   
-  NSArray *icons = @[@"Arrow.png",@"Rectangle.png", @"Blur.png"];
+  NSArray *items = @[@"Rectangle", @"Arrow", @"Blur"];
   
-  self.editingControls = [[UISegmentedControl alloc] initWithItems:@[@"Rectangle", @"Arrow", @"Blur"]];
-  int i=0;
-  for (NSString *imageName in icons){
-    [self.editingControls setImage:bit_imageNamed(imageName, BITHOCKEYSDK_BUNDLE) forSegmentAtIndex:i++];
-  }
+  self.editingControls = [[UISegmentedControl alloc] initWithItems:items];
+  [items enumerateObjectsUsingBlock:^(NSString *imageName, NSUInteger idx, BOOL *stop) {
+    [self.editingControls setImage:bit_imageNamed(imageName) forSegmentAtIndex:idx];
+  }];
   
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -114,11 +113,11 @@ typedef NS_ENUM(NSInteger, BITImageAnnotationViewControllerInteractionMode) {
   self.imageView.userInteractionEnabled = YES;
   
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Cancel.png", BITHOCKEYSDK_BUNDLE) landscapeImagePhone:bit_imageNamed(@"Cancel.png", BITHOCKEYSDK_BUNDLE) style:UIBarButtonItemStylePlain target:self action:@selector(discard:)];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Ok.png", BITHOCKEYSDK_BUNDLE) landscapeImagePhone:bit_imageNamed(@"Ok.png", BITHOCKEYSDK_BUNDLE) style:UIBarButtonItemStylePlain target:self action:@selector(save:)];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Cancel") landscapeImagePhone:bit_imageNamed(@"Cancel") style:UIBarButtonItemStylePlain target:self action:@selector(discard:)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Ok") landscapeImagePhone:bit_imageNamed(@"Ok") style:UIBarButtonItemStylePlain target:self action:@selector(save:)];
 #else
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Cancel.png", BITHOCKEYSDK_BUNDLE) landscapeImagePhone:bit_imageNamed(@"Cancel.png", BITHOCKEYSDK_BUNDLE) style:UIBarButtonItemStyleBordered target:self action:@selector(discard:)];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Ok.png", BITHOCKEYSDK_BUNDLE) landscapeImagePhone:bit_imageNamed(@"Ok.png", BITHOCKEYSDK_BUNDLE) style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Cancel") landscapeImagePhone:bit_imageNamed(@"Cancel") style:UIBarButtonItemStyleBordered target:self action:@selector(discard:)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc ] initWithImage:bit_imageNamed(@"Ok") landscapeImagePhone:bit_imageNamed(@"Ok") style:UIBarButtonItemStyleBordered target:self action:@selector(save:)];
 #endif
   
   self.view.autoresizesSubviews = NO;

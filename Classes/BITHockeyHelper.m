@@ -487,7 +487,7 @@ UIImage *bit_addGlossToImage(UIImage *inputImage) {
   UIGraphicsBeginImageContextWithOptions(inputImage.size, NO, 0.0);
   
   [inputImage drawAtPoint:CGPointZero];
-  UIImage *iconGradient = bit_imageNamed(@"IconGradient.png", BITHOCKEYSDK_BUNDLE);
+  UIImage *iconGradient = bit_imageNamed(@"IconGradient");
   [iconGradient drawInRect:CGRectMake(0, 0, inputImage.size.width, inputImage.size.height) blendMode:kCGBlendModeNormal alpha:0.5];
   
   UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
@@ -599,7 +599,7 @@ UIImage *bit_reflectedImageWithHeight(UIImage *inputImage, NSUInteger height, fl
 }
 
 
-UIImage *bit_newWithContentsOfResolutionIndependentFile(NSString * path) {
+static UIImage *bit_imageWithContentsOfResolutionIndependentFile(NSString * path) {
   if ([UIScreen instancesRespondToSelector:@selector(scale)] && (int)[[UIScreen mainScreen] scale] == 2.0) {
     NSString *path2x = [[path stringByDeletingLastPathComponent]
                         stringByAppendingPathComponent:[NSString stringWithFormat:@"%@@2x.%@",
@@ -615,15 +615,22 @@ UIImage *bit_newWithContentsOfResolutionIndependentFile(NSString * path) {
 }
 
 
-UIImage *bit_imageWithContentsOfResolutionIndependentFile(NSString *path) {
-  return bit_newWithContentsOfResolutionIndependentFile(path);
-}
-
-
-UIImage *bit_imageNamed(NSString *imageName, NSString *bundleName) {
-  NSString *resourcePath = [[NSBundle bundleForClass:[BITHockeyManager class]] resourcePath];
-  NSString *bundlePath = [resourcePath stringByAppendingPathComponent:bundleName];
-  NSString *imagePath = [bundlePath stringByAppendingPathComponent:imageName];
+UIImage *bit_imageNamed(NSString *imageName) {
+  static BOOL hasNewImageLoader = NO;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    hasNewImageLoader = floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1;
+  });
+  
+  NSBundle *bundle = BITHockeyBundle();
+  
+  if (hasNewImageLoader) {
+    return [UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
+  }
+  
+  NSString *name = imageName.stringByDeletingPathExtension;
+  NSString *ext = imageName.pathExtension ?: @"png";
+  NSString *imagePath = [bundle pathForResource:name ofType:ext];
   return bit_imageWithContentsOfResolutionIndependentFile(imagePath);
 }
 
