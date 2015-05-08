@@ -28,6 +28,9 @@
 
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @class BITFeedbackMessageAttachment;
 
@@ -100,3 +103,5 @@ typedef NS_ENUM(NSInteger, BITFeedbackMessageStatus) {
 - (NSArray *)previewableAttachments;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

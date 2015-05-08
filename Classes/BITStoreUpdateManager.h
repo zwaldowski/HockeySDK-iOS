@@ -28,8 +28,14 @@
 
 
 #import <UIKit/UIKit.h>
-#import "BITHockeyBaseManager.h"
+#import "HockeySDKFeatureConfig.h"
 
+#if HOCKEYSDK_FEATURE_STORE_UPDATES
+
+#import "BITHockeyBaseManager.h"
+#import "BITStoreUpdateManagerDelegate.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  Defines the update check intervals
@@ -48,8 +54,6 @@ typedef NS_ENUM(NSInteger, BITStoreUpdateSetting) {
    */
   BITStoreUpdateCheckManually = 2
 };
-
-@protocol BITStoreUpdateManagerDelegate;
 
 /**
  The store update manager module.
@@ -120,7 +124,7 @@ typedef NS_ENUM(NSInteger, BITStoreUpdateSetting) {
  @see checkForUpdateOnLaunch
  @see checkForUpdate
  */
-@property (nonatomic, strong) NSString *countryCode;
+@property (nonatomic, copy, nullable) NSString *countryCode;
 
 
 /**
@@ -184,3 +188,7 @@ typedef NS_ENUM(NSInteger, BITStoreUpdateSetting) {
 
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_STORE_UPDATES */

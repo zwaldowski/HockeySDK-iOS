@@ -29,9 +29,13 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_UPDATES
 
 #import "BITHockeyBaseViewController.h"
 
-
 @interface BITUpdateViewController : BITHockeyBaseViewController 
 @end
+
+#endif

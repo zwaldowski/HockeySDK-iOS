@@ -28,7 +28,6 @@
 //
 
 #import "BITKeychainUtils.h"
-#import <Security/Security.h>
 
 static NSString *BITKeychainUtilsErrorDomain = @"BITKeychainUtilsErrorDomain";
 

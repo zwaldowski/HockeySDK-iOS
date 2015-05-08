@@ -28,17 +28,14 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITUpdateManagerPrivate.h"
 
 #if HOCKEYSDK_FEATURE_UPDATES
-
-#import <sys/sysctl.h>
 
 #import "HockeySDKPrivate.h"
 #import "BITHockeyHelper.h"
 
 #import "BITHockeyBaseManagerPrivate.h"
-#import "BITUpdateManagerPrivate.h"
 #import "BITUpdateViewControllerPrivate.h"
 #import "BITAppVersionMetaInfo.h"
 

@@ -26,12 +26,12 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
-#import "HockeySDK.h"
+#import "BITCrashManager.h"
 
 #if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 #import <CrashReporter/CrashReporter.h>
+#import "BITAuthenticator.h"
 
 @class BITHockeyAppClient;
 
@@ -51,7 +51,7 @@
  
  @see `[BITHockeyManager setDelegate:]`
  */
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id <BITCrashManagerDelegate> delegate;
 
 /**
  * must be set

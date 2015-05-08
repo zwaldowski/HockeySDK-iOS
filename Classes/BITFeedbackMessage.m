@@ -28,6 +28,9 @@
 
 
 #import "BITFeedbackMessage.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #import "BITFeedbackMessageAttachment.h"
 
 @implementation BITFeedbackMessage
@@ -112,3 +115,5 @@
 
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

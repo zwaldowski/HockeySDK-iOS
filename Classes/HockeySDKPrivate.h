@@ -30,6 +30,8 @@
 
 
 #import <Foundation/Foundation.h>
+#import "BITHockeyManager.h"
+#import "BITTypes.h"
 
 #ifndef HockeySDK_HockeySDKPrivate_h
 #define HockeySDK_HockeySDKPrivate_h

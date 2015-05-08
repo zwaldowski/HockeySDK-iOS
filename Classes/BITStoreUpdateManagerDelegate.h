@@ -27,6 +27,11 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "BITStoreUpdateManager.h"
+
+#if HOCKEYSDK_FEATURE_STORE_UPDATES
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class BITStoreUpdateManager;
 
@@ -54,6 +59,8 @@
  */
 -(void)detectedUpdateFromStoreUpdateManager:(BITStoreUpdateManager *)storeUpdateManager newVersion:(NSString *)newVersion storeURL:(NSURL *)storeURL;
 
-
-
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif

@@ -27,6 +27,9 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @class BITImageAnnotationViewController;
 
@@ -43,3 +46,5 @@
 @property (nonatomic, weak) id<BITImageAnnotationDelegate> delegate;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

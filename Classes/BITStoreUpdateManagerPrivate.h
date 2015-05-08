@@ -28,6 +28,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#import "BITStoreUpdateManager.h"
 
 #if HOCKEYSDK_FEATURE_STORE_UPDATES
 
@@ -41,7 +42,7 @@
 /**
  Sets the optional `BITStoreUpdateManagerDelegate` delegate.
  */
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id <BITStoreUpdateManagerDelegate> delegate;
 
 
 // is an update available?

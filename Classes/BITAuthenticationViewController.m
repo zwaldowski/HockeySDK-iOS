@@ -27,11 +27,12 @@
  */
 
 #import "BITAuthenticationViewController.h"
+
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
+
 #import "BITAuthenticator_Private.h"
 #import "HockeySDKPrivate.h"
-#import "HockeySDK.h"
 #import "BITHockeyHelper.h"
-#import "BITHockeyAppClient.h"
 
 @interface BITAuthenticationViewController ()<UITextFieldDelegate> {
   UIStatusBarStyle _statusBarStyle;
@@ -323,3 +324,5 @@
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_AUTHENTICATOR */

@@ -26,13 +26,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITFeedbackActivity.h"
 
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
 #import "HockeySDKPrivate.h"
-
-#import "BITFeedbackActivity.h"
 
 #import "BITHockeyHelper.h"
 #import "BITFeedbackManagerPrivate.h"
@@ -40,6 +38,7 @@
 #import "BITHockeyBaseManagerPrivate.h"
 #import "BITHockeyAttachment.h"
 
+#import "BITFeedbackComposeViewController.h"
 
 @interface BITFeedbackActivity()
 

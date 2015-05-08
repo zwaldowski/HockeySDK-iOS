@@ -27,6 +27,9 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @interface BITImageAnnotation : UIView {
   BOOL _selected;
@@ -42,3 +45,5 @@
 - (BOOL)isSelected;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

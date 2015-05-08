@@ -27,8 +27,10 @@
  */
 
 #import "BITHockeyBaseViewController.h"
-#import "HockeySDKPrivate.h"
 
+#if HOCKEYSDK_FEATURES_ANY
+
+#import "HockeySDKPrivate.h"
 
 @implementation BITHockeyBaseViewController {
   BOOL _modal;
@@ -130,3 +132,5 @@
 
 
 @end
+
+#endif /* HOCKEYSDK_FEATURES_ANY */

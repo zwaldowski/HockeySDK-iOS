@@ -28,12 +28,17 @@
 
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
+NS_ASSUME_NONNULL_BEGIN
 
 @protocol BITFeedbackUserDataDelegate;
 
 @interface BITFeedbackUserDataViewController : UITableViewController <UITextFieldDelegate>
 
-@property (nonatomic, weak) id <BITFeedbackUserDataDelegate> delegate;
+@property (nonatomic, weak, nullable) id <BITFeedbackUserDataDelegate> delegate;
 
 @end
 
@@ -49,3 +54,7 @@
 - (void)userDataUpdateFinished;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

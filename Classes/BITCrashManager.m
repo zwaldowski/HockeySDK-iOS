@@ -28,12 +28,9 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITCrashManagerPrivate.h"
 
 #if HOCKEYSDK_FEATURE_CRASH_REPORTER
-
-#import <SystemConfiguration/SystemConfiguration.h>
-#import <UIKit/UIKit.h>
 
 #import "HockeySDKPrivate.h"
 #import "BITHockeyHelper.h"
@@ -41,9 +38,9 @@
 
 #import "BITCrashAttachment.h"
 #import "BITHockeyBaseManagerPrivate.h"
-#import "BITCrashManagerPrivate.h"
 #import "BITCrashReportTextFormatter.h"
 #import "BITCrashDetailsPrivate.h"
+#import "BITCrashMetaData.h"
 
 #include <sys/sysctl.h>
 
@@ -552,6 +549,9 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
   return userID;
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 /**
  *	 Get the userName from the delegate which should be stored with the crash report
  *
@@ -609,6 +609,8 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
 }
 
 
+#pragma clang diagnostic pop
+
 #pragma mark - Public
 
 
@@ -632,7 +634,7 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
 
 
 - (void)setAlertViewHandler:(BITCustomAlertViewHandler)alertViewHandler{
-  _alertViewHandler = alertViewHandler;
+  _alertViewHandler = [alertViewHandler copy];
 }
 
 /**

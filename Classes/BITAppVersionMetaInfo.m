@@ -29,8 +29,10 @@
  */
 
 #import "BITAppVersionMetaInfo.h"
-#import "HockeySDKPrivate.h"
 
+#if HOCKEYSDK_FEATURE_UPDATES
+
+#import "HockeySDKPrivate.h"
 
 @implementation BITAppVersionMetaInfo
 
@@ -226,3 +228,5 @@
   return hasUUID;
 }
 @end
+
+#endif /* HOCKEYSDK_FEATURE_UPDATES */

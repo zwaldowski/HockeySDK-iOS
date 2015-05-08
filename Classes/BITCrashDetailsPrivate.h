@@ -26,7 +26,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <HockeySDK/HockeySDK.h>
+#import "BITCrashDetails.h"
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 extern NSString *const __attribute__((unused)) kBITCrashKillSignal;
 
@@ -46,3 +49,5 @@ extern NSString *const __attribute__((unused)) kBITCrashKillSignal;
                                   appBuild:(NSString *)appBuild;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

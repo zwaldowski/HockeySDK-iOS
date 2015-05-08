@@ -27,9 +27,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @class BITFeedbackManager;
 @protocol BITFeedbackComposeViewControllerDelegate;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *	Delegate protocol which is notified about changes in the feedbackManager
@@ -48,3 +53,7 @@
 - (void) feedbackManagerDidReceiveNewFeedback:(BITFeedbackManager*) feedbackManager;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

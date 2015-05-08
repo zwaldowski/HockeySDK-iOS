@@ -26,9 +26,12 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
 
+#if HOCKEYSDK_FEATURES_ANY
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  The internal superclass for all component managers
@@ -72,7 +75,7 @@
  Default is RGB(25, 25, 25)
  @see barStyle
  */
-@property (nonatomic, strong) UIColor *navigationBarTintColor;
+@property (nonatomic, strong, nullable) UIColor *navigationBarTintColor;
 
 /**
  The UIModalPresentationStyle for showing the update user interface when invoked
@@ -82,3 +85,7 @@
 
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURES_ANY */

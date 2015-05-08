@@ -28,15 +28,17 @@
 
 #import "BITCrashAttachment.h"
 
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
+
 @implementation BITCrashAttachment
 
 - (instancetype)initWithFilename:(NSString *)filename
              crashAttachmentData:(NSData *)crashAttachmentData
                      contentType:(NSString *)contentType
 {
-  self = [super initWithFilename:filename hockeyAttachmentData:crashAttachmentData contentType:contentType];
-  
-  return self;
+  return (self = [self initWithFilename:filename hockeyAttachmentData:crashAttachmentData contentType:contentType]);
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

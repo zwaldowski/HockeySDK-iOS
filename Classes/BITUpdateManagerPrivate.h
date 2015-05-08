@@ -29,15 +29,14 @@
  */
 
 
-#import "HockeySDK.h"
+#import "BITUpdateManager.h"
 
 #if HOCKEYSDK_FEATURE_UPDATES
 
 /** TODO:
   * if during startup the auth-state is pending, we get never rid of the nag-alertview
  */
-@interface BITUpdateManager () {
-}
+@interface BITUpdateManager () <UIAlertViewDelegate>
 
 ///-----------------------------------------------------------------------------
 /// @name Delegate
@@ -51,7 +50,7 @@
  
  @see `[BITHockeyManager setDelegate:]`
  */
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak) id <BITUpdateManagerDelegate> delegate;
 
 
 // is an update available?

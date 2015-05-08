@@ -28,9 +28,11 @@
 
 
 #import "BITFeedbackMessageAttachment.h"
-#import "BITHockeyHelper.h"
-#import "HockeySDKPrivate.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "BITHockeyHelper.h"
 
 #define kCacheFolderName @"attachments"
 
@@ -256,3 +258,5 @@
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

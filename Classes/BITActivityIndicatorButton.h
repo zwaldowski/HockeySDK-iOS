@@ -25,9 +25,14 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @interface BITActivityIndicatorButton : UIButton
 
 - (void)setShowsActivityIndicator:(BOOL)showsIndicator;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

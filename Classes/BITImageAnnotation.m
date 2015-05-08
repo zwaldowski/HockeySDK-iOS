@@ -28,6 +28,8 @@
 
 #import "BITImageAnnotation.h"
 
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 @implementation BITImageAnnotation
 
 -(BOOL)resizable {
@@ -43,3 +45,5 @@
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

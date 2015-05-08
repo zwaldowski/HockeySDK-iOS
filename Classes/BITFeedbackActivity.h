@@ -27,8 +27,14 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
 
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
+#import "BITHockeyBaseManager.h"
 #import "BITFeedbackComposeViewControllerDelegate.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  UIActivity subclass allowing to use the feedback interface to share content with the developer
@@ -59,7 +65,7 @@
  
  @see customActivityTitle
  */
-@property (nonatomic, strong) UIImage *customActivityImage;
+@property (nonatomic, strong, nullable) UIImage *customActivityImage;
 
 
 /**
@@ -70,6 +76,10 @@
  
  @see customActivityImage
  */
-@property (nonatomic, strong) NSString *customActivityTitle;
+@property (nonatomic, copy, nullable) NSString *customActivityTitle;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

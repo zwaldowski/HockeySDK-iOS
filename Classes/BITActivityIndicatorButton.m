@@ -26,6 +26,8 @@
 
 #import "BITActivityIndicatorButton.h"
 
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 @interface BITActivityIndicatorButton()
 
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
@@ -74,3 +76,5 @@
 
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

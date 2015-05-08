@@ -28,8 +28,13 @@
 
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 #import "BITFeedbackComposeViewControllerDelegate.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  View controller allowing the user to write and send new feedback
@@ -61,7 +66,7 @@
  
  @see `[BITHockeyManager setDelegate:`]
  */
-@property (nonatomic, weak) id<BITFeedbackComposeViewControllerDelegate> delegate;
+@property (nonatomic, weak, nullable) id<BITFeedbackComposeViewControllerDelegate> delegate;
 
 
 ///-----------------------------------------------------------------------------
@@ -84,6 +89,10 @@
  
  @param items Array of data objects to prefill the feedback text message.
  */
-- (void)prepareWithItems:(NSArray *)items;
+- (void)prepareWithItems:(nullable NSArray *)items;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

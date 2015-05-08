@@ -28,18 +28,24 @@
 
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 #import "BITHockeyBaseManager.h"
-#import "BITFeedbackListViewController.h"
-#import "BITFeedbackComposeViewController.h"
+#import "BITFeedbackManagerDelegate.h"
 
+@class BITFeedbackListViewController;
+@class BITFeedbackComposeViewController;
+@class BITFeedbackMessage;
+
+NS_ASSUME_NONNULL_BEGIN
 
 // Notification message which tells that loading messages finished
-#define BITHockeyFeedbackMessagesLoadingStarted @"BITHockeyFeedbackMessagesLoadingStarted"
+extern NSString *const __attribute__((unused)) BITHockeyFeedbackMessagesLoadingStarted;
 
 // Notification message which tells that loading messages finished
-#define BITHockeyFeedbackMessagesLoadingFinished @"BITHockeyFeedbackMessagesLoadingFinished"
-
+extern NSString *const __attribute__((unused)) BITHockeyFeedbackMessagesLoadingFinished;
 
 /**
  *  Defines behavior of the user data field
@@ -76,10 +82,6 @@ typedef NS_ENUM(NSInteger, BITFeedbackObservationMode) {
    */
   BITFeedbackObservationModeThreeFingerTap = 2
 };
-
-
-@class BITFeedbackMessage;
-@protocol BITFeedbackManagerDelegate;
 
 /**
  The feedback module.
@@ -231,7 +233,7 @@ typedef NS_ENUM(NSInteger, BITFeedbackObservationMode) {
  @param items an NSArray with objects that should be attached
  @see `[BITFeedbackComposeViewController prepareWithItems:]`
  */
-@property (nonatomic, copy) NSArray *feedbackComposerPreparedItems;
+@property (nonatomic, copy, nullable) NSArray *feedbackComposerPreparedItems;
 
 
 ///-----------------------------------------------------------------------------
@@ -268,7 +270,7 @@ typedef NS_ENUM(NSInteger, BITFeedbackObservationMode) {
 
  @return UIImage instance containing a screenshot of the current screen
  */
-- (UIImage *)screenshot;
+@property (readonly, copy) UIImage *screenshot;
 
 
 /**
@@ -301,7 +303,7 @@ typedef NS_ENUM(NSInteger, BITFeedbackObservationMode) {
  @param items an NSArray with objects that should be attached
  @see `[BITFeedbackComposeViewController prepareWithItems:]`
  */
-- (void)showFeedbackComposeViewWithPreparedItems:(NSArray *)items;
+- (void)showFeedbackComposeViewWithPreparedItems:(nullable NSArray *)items;
 
 /**
  Presents a modal feedback compose interface with a screenshot attached which is taken at the time of calling this method.
@@ -333,7 +335,11 @@ typedef NS_ENUM(NSInteger, BITFeedbackObservationMode) {
  @return `BITFeedbackComposeViewController` The compose feedback view controller,
  e.g. to push it onto a navigation stack.
  */
-- (BITFeedbackComposeViewController *)feedbackComposeViewController;
+@property (nonatomic, readonly, strong) BITFeedbackComposeViewController *feedbackComposeViewController;
 
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

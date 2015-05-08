@@ -27,7 +27,12 @@
  */
 
 #import "BITImageAnnotation.h"
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @interface BITBlurImageAnnotation : BITImageAnnotation
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

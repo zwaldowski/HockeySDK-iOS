@@ -29,9 +29,7 @@
 
 #import "BITHockeyHelper.h"
 #import "BITKeychainUtils.h"
-#import "HockeySDK.h"
 #import "HockeySDKPrivate.h"
-#import <QuartzCore/QuartzCore.h>
 
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 70000

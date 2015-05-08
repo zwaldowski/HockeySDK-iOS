@@ -28,6 +28,8 @@
 
 #import "BITHockeyAttachment.h"
 
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
+
 /**
  Deprecated: Provides support to add binary attachments to crash reports
  
@@ -57,3 +59,5 @@
                      contentType:(NSString *)contentType;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

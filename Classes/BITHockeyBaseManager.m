@@ -26,13 +26,14 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITHockeyBaseManagerPrivate.h"
+
+#if HOCKEYSDK_FEATURES_ANY
+
 #import "HockeySDKPrivate.h"
 
 #import "BITHockeyHelper.h"
 
-#import "BITHockeyBaseManager.h"
-#import "BITHockeyBaseManagerPrivate.h"
 #if HOCKEYSDK_FEATURE_AUTHENTICATOR || HOCKEYSDK_FEATURE_UPDATES || HOCKEYSDK_FEATURE_FEEDBACK
 #import "BITHockeyBaseViewController.h"
 #endif
@@ -41,7 +42,6 @@
 
 #import <sys/sysctl.h>
 #import <mach-o/dyld.h>
-#import <mach-o/loader.h>
 
 #ifndef __IPHONE_6_1
 #define __IPHONE_6_1     60100
@@ -329,3 +329,5 @@
 
 
 @end
+
+#endif /* HOCKEYSDK_FEATURES_ANY */

@@ -26,9 +26,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #import "BITAuthenticator.h"
-#import "HockeySDK.h"
+
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
+
 #import "HockeySDKPrivate.h"
 #import "BITAuthenticator_Private.h"
 #import "BITHTTPOperation.h"
@@ -907,4 +908,7 @@ static unsigned char kBITPNGEndChunk[4] = {0x49, 0x45, 0x4e, 0x44};
     [self validate];
   }
 }
+
 @end
+
+#endif /* HOCKEYSDK_FEATURE_AUTHENTICATOR */

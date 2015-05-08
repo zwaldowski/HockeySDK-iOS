@@ -27,6 +27,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
+NS_ASSUME_NONNULL_BEGIN
+
+@class BITFeedbackComposeViewController;
 
 /**
  *  The users action when composing a message
@@ -78,3 +85,7 @@ typedef NS_ENUM(NSUInteger, BITFeedbackComposeResult) {
  */
 - (void)feedbackComposeViewControllerDidFinish:(BITFeedbackComposeViewController *)composeViewController __attribute__((deprecated("Use feedbackComposeViewController:didFinishWithResult: instead")));
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

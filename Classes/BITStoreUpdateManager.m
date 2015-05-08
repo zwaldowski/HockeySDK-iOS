@@ -26,18 +26,13 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITStoreUpdateManagerPrivate.h"
 
 #if HOCKEYSDK_FEATURE_STORE_UPDATES
 
-#import <sys/sysctl.h>
-
 #import "HockeySDKPrivate.h"
-#import "BITHockeyHelper.h"
-
 #import "BITHockeyBaseManagerPrivate.h"
-#import "BITStoreUpdateManagerPrivate.h"
-
+#import "BITHockeyHelper.h"
 
 @implementation BITStoreUpdateManager {
   NSString *_newStoreVersion;

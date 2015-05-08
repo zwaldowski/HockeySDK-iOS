@@ -26,13 +26,14 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "BITHockeyBaseManager.h"
+
+#if HOCKEYSDK_FEATURES_ANY
 
 @class BITHockeyBaseManager;
 @class BITHockeyBaseViewController;
 
-@interface BITHockeyBaseManager()
+@interface BITHockeyBaseManager ()
 
 @property (nonatomic, strong) NSString *appIdentifier;
 
@@ -82,3 +83,5 @@
 - (BOOL)removeKeyFromKeychain:(NSString *)key;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURES_ANY */

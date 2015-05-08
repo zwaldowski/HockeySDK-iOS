@@ -31,21 +31,21 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#import "BITCrashReportTextFormatter.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
+
 #import <CrashReporter/CrashReporter.h>
 
 #import <mach-o/dyld.h>
 #import <mach-o/getsect.h>
 #import <mach-o/ldsyms.h>
-#import <dlfcn.h>
-#import <Availability.h>
 
 #if defined(__OBJC2__)
 #define SEL_NAME_SECT "__objc_methname"
 #else
 #define SEL_NAME_SECT "__cstring"
 #endif
-
-#import "BITCrashReportTextFormatter.h"
 
 /*
  * XXX: The ARM64 CPU type, and ARM_V7S and ARM_V8 Mach-O CPU subtypes are not
@@ -829,3 +829,5 @@ static const char *findSEL (const char *imageName, NSString *imageUUID, uint64_t
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

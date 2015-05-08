@@ -28,14 +28,21 @@
 
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #import "BITFeedbackMessage.h"
 #import "BITAttributedLabel.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
+@class BITFeedbackListViewCell;
 @class BITFeedbackMessageAttachment;
 
 @protocol BITFeedbackListViewCellDelegate <NSObject>
 
-- (void)listCell:(id)cell didSelectAttachment:(BITFeedbackMessageAttachment *)attachment;
+- (void)listCell:(BITFeedbackListViewCell *)cell didSelectAttachment:(BITFeedbackMessageAttachment *)attachment;
 
 @end
 
@@ -71,15 +78,15 @@ typedef NS_ENUM(NSUInteger, BITFeedbackListViewCellBackgroundStyle) {
 
 @interface BITFeedbackListViewCell : UITableViewCell
 
-@property (nonatomic, strong) BITFeedbackMessage *message;
+@property (nonatomic, nullable) BITFeedbackMessage *message;
 
 @property (nonatomic) BITFeedbackListViewCellPresentationStyle style;
 
 @property (nonatomic) BITFeedbackListViewCellBackgroundStyle backgroundStyle;
 
-@property (nonatomic, strong) BITAttributedLabel *labelText;
+@property (nonatomic, strong, readonly) BITAttributedLabel *labelText;
 
-@property (nonatomic, weak) id<BITFeedbackListViewCellDelegate> delegate;
+@property (nonatomic, weak, nullable) id<BITFeedbackListViewCellDelegate> delegate;
 
 + (CGFloat) heightForRowWithMessage:(BITFeedbackMessage *)message tableViewWidth:(CGFloat)width;
 
@@ -95,3 +102,7 @@ typedef DEPRECATED_MSG_ATTRIBUTE("Use the properly spelled enum `BITFeedbackList
 };
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

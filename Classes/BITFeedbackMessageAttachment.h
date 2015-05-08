@@ -26,8 +26,11 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #import <QuickLook/QuickLook.h>
 
 /**
@@ -66,3 +69,5 @@
 - (NSString*)possibleFilename;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

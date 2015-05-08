@@ -27,10 +27,11 @@
  */
 
 
-#import <UIKit/UIKit.h>
-#import <QuickLook/QuickLook.h>
-
 #import "BITHockeyBaseViewController.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  View controller providing a default interface to manage feedback
@@ -55,7 +56,10 @@
  This ensures that the presentation on iOS 6 and iOS 7 will use the current design on each OS Version.
  */
 
-@interface BITFeedbackListViewController : BITHockeyBaseViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIAlertViewDelegate, QLPreviewControllerDataSource> {
-}
+@interface BITFeedbackListViewController : BITHockeyBaseViewController
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

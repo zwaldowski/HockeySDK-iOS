@@ -28,6 +28,8 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#import "BITFeedbackManager.h"
+
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
 extern NSString *const kBITFeedbackUpdateAttachmentThumbnail;

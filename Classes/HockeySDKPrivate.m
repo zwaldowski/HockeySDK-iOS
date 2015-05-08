@@ -27,10 +27,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
 #import "HockeySDKPrivate.h"
 #include <CommonCrypto/CommonDigest.h>
 
+NSString *const BITHockeyNetworkDidBecomeReachableNotification = @"BITHockeyNetworkDidBecomeReachable";
 NSString *const kBITCrashErrorDomain = @"BITCrashReporterErrorDomain";
 NSString *const kBITUpdateErrorDomain = @"BITUpdaterErrorDomain";
 NSString *const kBITFeedbackErrorDomain = @"BITFeedbackErrorDomain";

@@ -26,28 +26,21 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
-#import "HockeySDK.h"
+#import "BITFeedbackListViewController.h"
 
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
 #import "HockeySDKPrivate.h"
 
 #import "BITFeedbackManagerPrivate.h"
-#import "BITFeedbackManager.h"
-#import "BITFeedbackListViewController.h"
 #import "BITFeedbackListViewCell.h"
 #import "BITFeedbackComposeViewController.h"
 #import "BITFeedbackUserDataViewController.h"
-#import "BITFeedbackMessage.h"
 #import "BITFeedbackMessageAttachment.h"
-#import "BITAttributedLabel.h"
 
 #import "BITHockeyBaseManagerPrivate.h"
 
 #import "BITHockeyHelper.h"
-#import <QuartzCore/QuartzCore.h>
-#import <QuickLook/QuickLook.h>
 
 
 #define DEFAULT_BACKGROUNDCOLOR BIT_RGBCOLOR(245, 245, 245)
@@ -66,8 +59,7 @@
 
 #define BORDER_COLOR BIT_RGBCOLOR(215, 215, 215)
 
-
-@interface BITFeedbackListViewController () <BITFeedbackUserDataDelegate, BITFeedbackComposeViewControllerDelegate, BITAttributedLabelDelegate, BITFeedbackListViewCellDelegate>
+@interface BITFeedbackListViewController () <BITFeedbackUserDataDelegate, BITFeedbackComposeViewControllerDelegate, BITAttributedLabelDelegate, BITFeedbackListViewCellDelegate, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UIAlertViewDelegate, QLPreviewControllerDataSource>
 
 @property (nonatomic, weak) BITFeedbackManager *manager;
 @property (nonatomic, strong) NSDateFormatter *lastUpdateDateFormatter;

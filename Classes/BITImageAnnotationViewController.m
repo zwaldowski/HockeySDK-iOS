@@ -27,12 +27,14 @@
  */
 
 #import "BITImageAnnotationViewController.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #import "BITImageAnnotation.h"
 #import "BITRectangleImageAnnotation.h"
 #import "BITArrowImageAnnotation.h"
 #import "BITBlurImageAnnotation.h"
 #import "BITHockeyHelper.h"
-#import "HockeySDKPrivate.h"
 
 typedef NS_ENUM(NSInteger, BITImageAnnotationViewControllerInteractionMode) {
   BITImageAnnotationViewControllerInteractionModeNone,
@@ -403,4 +405,7 @@ typedef NS_ENUM(NSInteger, BITImageAnnotationViewControllerInteractionMode) {
 - (BOOL)canDrawNewAnnotation {
   return [self.editingControls selectedSegmentIndex] != UISegmentedControlNoSegment;
 }
+
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

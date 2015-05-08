@@ -28,6 +28,8 @@
 
 #import "BITBlurImageAnnotation.h"
 
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 @interface BITBlurImageAnnotation()
 
 @property (nonatomic, strong) CALayer* imageLayer;
@@ -99,3 +101,5 @@
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

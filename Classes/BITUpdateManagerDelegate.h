@@ -27,6 +27,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_UPDATES
+
+#import "BITHockeyBaseManager.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class BITUpdateManager;
 
@@ -134,24 +141,8 @@
  */
 - (void)updateManagerWillExitApp:(BITUpdateManager *)updateManager;
 
-
-#pragma mark - Deprecated
-
-///-----------------------------------------------------------------------------
-/// @name Update View Presentation Helper
-///-----------------------------------------------------------------------------
-
-/**
- Provide a parent view controller for the update user interface
- 
- If you don't have a `rootViewController` set on your `UIWindow` and the SDK cannot
- automatically find the current top most `UIViewController`, you can provide the 
- `UIViewController` that should be used to present the update user interface modal.
-
- @param updateManager The `BITUpdateManager` instance invoking this delegate
- 
- @deprecated Please use `BITHockeyManagerDelegate viewControllerForHockeyManager:componentManager:` instead
- */
-- (UIViewController *)viewControllerForUpdateManager:(BITUpdateManager *)updateManager DEPRECATED_ATTRIBUTE;
-
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif

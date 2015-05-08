@@ -27,14 +27,13 @@
  */
 
 
-#import "HockeySDK.h"
+#import "BITFeedbackUserDataViewController.h"
 
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
 #import "HockeySDKPrivate.h"
 #import "BITHockeyHelper.h"
 
-#import "BITFeedbackUserDataViewController.h"
 #import "BITFeedbackManagerPrivate.h"
 
 @interface BITFeedbackUserDataViewController () {

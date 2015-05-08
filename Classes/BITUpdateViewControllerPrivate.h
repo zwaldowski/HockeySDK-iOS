@@ -28,7 +28,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITUpdateViewController.h"
 
 #if HOCKEYSDK_FEATURE_UPDATES
 

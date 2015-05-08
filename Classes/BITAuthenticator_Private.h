@@ -26,8 +26,10 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-
 #import "BITAuthenticator.h"
+
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
+
 #import "BITHockeyBaseManagerPrivate.h"
 #import "BITAuthenticationViewController.h"
 @class BITHockeyAppClient;
@@ -93,3 +95,5 @@
 - (BOOL) needsValidation;
 - (void) authenticate;
 @end
+
+#endif /* HOCKEYSDK_FEATURE_AUTHENTICATOR */

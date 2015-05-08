@@ -26,13 +26,12 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
+#import "BITFeedbackListViewCell.h"
 
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
 #import "HockeySDKPrivate.h"
 
-#import "BITFeedbackListViewCell.h"
 #import "BITFeedbackMessageAttachment.h"
 #import "BITActivityIndicatorButton.h"
 #import "BITFeedbackManagerPrivate.h"

@@ -28,29 +28,17 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 #import "HockeySDKFeatureConfig.h"
-
-
-@protocol BITHockeyManagerDelegate;
+#import "BITHockeyManagerDelegate.h"
 
 @class BITHockeyBaseManager;
-#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 @class BITCrashManager;
-#endif
-#if HOCKEYSDK_FEATURE_UPDATES
 @class BITUpdateManager;
-#endif
-#if HOCKEYSDK_FEATURE_STORE_UPDATES
 @class BITStoreUpdateManager;
-#endif
-#if HOCKEYSDK_FEATURE_FEEDBACK
 @class BITFeedbackManager;
-#endif
-#if HOCKEYSDK_FEATURE_AUTHENTICATOR
 @class BITAuthenticator;
-#endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 /** 
  The HockeySDK manager. Responsible for setup and management of all components
@@ -135,7 +123,7 @@
  @param appIdentifier The app identifier that should be used.
  @param delegate `nil` or the class implementing the option protocols
  */
-- (void)configureWithIdentifier:(NSString *)appIdentifier delegate:(id<BITHockeyManagerDelegate>)delegate;
+- (void)configureWithIdentifier:(NSString *)appIdentifier delegate:(nullable id<BITHockeyManagerDelegate>)delegate;
 
 
 /**
@@ -172,7 +160,7 @@
  @param liveIdentifier The app identifier for the app store configurations.
  @param delegate `nil` or the class implementing the optional protocols
  */
-- (void)configureWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentifier delegate:(id<BITHockeyManagerDelegate>)delegate;
+- (void)configureWithBetaIdentifier:(NSString *)betaIdentifier liveIdentifier:(NSString *)liveIdentifier delegate:(nullable id<BITHockeyManagerDelegate>)delegate;
 
 
 /**
@@ -208,7 +196,7 @@
  @see BITUpdateManagerDelegate
  @see BITFeedbackManagerDelegate
  */
-@property (nonatomic, weak) id<BITHockeyManagerDelegate> delegate;
+@property (nonatomic, weak, nullable) id<BITHockeyManagerDelegate> delegate;
 
 
 /**
@@ -219,7 +207,7 @@
  
  @warning This property needs to be set before calling `startManager`
  */
-@property (nonatomic, strong) NSString *serverURL;
+@property (nonatomic, copy, nullable) NSString *serverURL;
 
 
 #if HOCKEYSDK_FEATURE_CRASH_REPORTER
@@ -234,7 +222,7 @@
  @see startManager
  @see disableCrashManager
  */
-@property (nonatomic, strong, readonly) BITCrashManager *crashManager;
+@property (nonatomic, strong, readonly, nullable) BITCrashManager *crashManager;
 
 
 /**
@@ -268,7 +256,7 @@
  @see startManager
  @see disableUpdateManager
  */
-@property (nonatomic, strong, readonly) BITUpdateManager *updateManager;
+@property (nonatomic, strong, readonly, nullable) BITUpdateManager *updateManager;
 
 
 /**
@@ -301,7 +289,7 @@
  @see startManager
  @see enableStoreUpdateManager
  */
-@property (nonatomic, strong, readonly) BITStoreUpdateManager *storeUpdateManager;
+@property (nonatomic, strong, readonly, nullable) BITStoreUpdateManager *storeUpdateManager;
 
 
 /**
@@ -334,7 +322,7 @@
  @see startManager
  @see disableFeedbackManager
  */
-@property (nonatomic, strong, readonly) BITFeedbackManager *feedbackManager;
+@property (nonatomic, strong, readonly, nullable) BITFeedbackManager *feedbackManager;
 
 
 /**
@@ -366,7 +354,7 @@
  @see configureWithBetaIdentifier:liveIdentifier:delegate:
  @see startManager
  */
-@property (nonatomic, strong, readonly) BITAuthenticator *authenticator;
+@property (nonatomic, strong, readonly, nullable) BITAuthenticator *authenticator;
 
 #endif
 
@@ -395,7 +383,7 @@
  This is not identical to the `[ASIdentifierManager advertisingIdentifier]` or
  the `[UIDevice identifierForVendor]`!
  */
-@property (nonatomic, readonly) NSString *installString;
+@property (nonatomic, copy, readonly) NSString *installString;
 
 
 ///-----------------------------------------------------------------------------
@@ -461,7 +449,7 @@
  @see userEmail
  @see `[BITHockeyManagerDelegate userIDForHockeyManager:componentManager:]`
  */
-@property (nonatomic, retain) NSString *userID;
+@property (nonatomic, copy, nullable) NSString *userID;
 
 
 /** Set the user name that should used in the SDK components
@@ -486,7 +474,7 @@
  @see userEmail
  @see `[BITHockeyManagerDelegate userNameForHockeyManager:componentManager:]`
  */
-@property (nonatomic, retain) NSString *userName;
+@property (nonatomic, copy, nullable) NSString *userName;
 
 
 /** Set the users email address that should used in the SDK components
@@ -511,7 +499,7 @@
  @see userName
  @see `[BITHockeyManagerDelegate userEmailForHockeyManager:componentManager:]`
  */
-@property (nonatomic, retain) NSString *userEmail;
+@property (nonatomic, copy, nullable) NSString *userEmail;
 
 
 ///-----------------------------------------------------------------------------
@@ -521,11 +509,13 @@
 /**
  Returns the SDK Version (CFBundleShortVersionString).
  */
-- (NSString *)version;
+@property (nonatomic, readonly, copy) NSString *version;
 
 /**
  Returns the SDK Build (CFBundleVersion) as a string.
  */
-- (NSString *)build;
+@property (nonatomic, readonly, copy) NSString *build;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -28,6 +28,8 @@
 
 #import "BITArrowImageAnnotation.h"
 
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 #define kArrowPointCount 7
 
 
@@ -202,3 +204,5 @@
 }
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

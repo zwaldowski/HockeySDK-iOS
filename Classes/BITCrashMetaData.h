@@ -27,7 +27,11 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
 
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  *  This class provides properties that can be attached to a crash report via a custom alert view flow
@@ -37,21 +41,25 @@
 /**
  *  User provided description that should be attached to the crash report as plain text
  */
-@property (nonatomic, copy) NSString *userDescription;
+@property (nonatomic, copy, nullable) NSString *userDescription;
 
 /**
  *  User name that should be attached to the crash report
  */
-@property (nonatomic, copy) NSString *userName;
+@property (nonatomic, copy, nullable) NSString *userName;
 
 /**
  *  User email that should be attached to the crash report
  */
-@property (nonatomic, copy) NSString *userEmail;
+@property (nonatomic, copy, nullable) NSString *userEmail;
 
 /**
  *  User ID that should be attached to the crash report
  */
-@property (nonatomic, copy) NSString *userID;
+@property (nonatomic, copy, nullable) NSString *userID;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

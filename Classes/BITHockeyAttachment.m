@@ -28,6 +28,8 @@
 
 #import "BITHockeyAttachment.h"
 
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER || HOCKEYSDK_FEATURE_FEEDBACK
+
 @implementation BITHockeyAttachment
 
 - (instancetype)initWithFilename:(NSString *)filename
@@ -35,9 +37,9 @@
                      contentType:(NSString *)contentType
 {
   if (self = [super init]) {
-    _filename = filename;
+    _filename = [filename copy];
 
-    _hockeyAttachmentData = hockeyAttachmentData;
+    _hockeyAttachmentData = [hockeyAttachmentData copy];
     
     if (contentType) {
       _contentType = contentType;
@@ -73,3 +75,5 @@
 }
 
 @end
+
+#endif

@@ -27,6 +27,11 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER || HOCKEYSDK_FEATURE_FEEDBACK
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  Provides support to add binary attachments to crash reports and feedback messages
@@ -35,34 +40,40 @@
  `[BITFeedbackComposeViewController prepareWithItems:]` and
  `[BITFeedbackManager showFeedbackComposeViewWithPreparedItems:]`
  */
-@interface BITHockeyAttachment : NSObject<NSCoding>
+@interface BITHockeyAttachment : NSObject <NSCoding>
 
 /**
  The filename the attachment should get
  */
-@property (nonatomic, readonly, strong) NSString *filename;
+@property (nonatomic, readonly, copy, nullable) NSString *filename;
 
 /**
  The attachment data as NSData object
  */
-@property (nonatomic, readonly, strong) NSData *hockeyAttachmentData;
+@property (nonatomic, readonly, copy) NSData *hockeyAttachmentData;
 
 /**
  The content type of your data as MIME type
  */
-@property (nonatomic, readonly, strong) NSString *contentType;
+@property (nonatomic, readonly, copy, nullable) NSString *contentType;
 
 /**
  Create an BITHockeyAttachment instance with a given filename and NSData object
  
  @param filename             The filename the attachment should get. If nil will get a automatically generated filename
- @param hockeyAttachmentData The attachment data as NSData. The instance will be ignore if this is set to nil!
+ @param hockeyAttachmentData The attachment data as NSData.
  @param contentType          The content type of your data as MIME type. If nil will be set to "application/octet-stream"
  
  @return An instance of BITHockeyAttachment.
  */
-- (instancetype)initWithFilename:(NSString *)filename
+- (instancetype)initWithFilename:(nullable NSString *)filename
             hockeyAttachmentData:(NSData *)hockeyAttachmentData
-                     contentType:(NSString *)contentType;
+                     contentType:(nullable NSString *)contentType NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder  NS_DESIGNATED_INITIALIZER;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER || HOCKEYSDK_FEATURE_FEEDBACK */

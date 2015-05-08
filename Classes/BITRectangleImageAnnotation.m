@@ -28,6 +28,8 @@
 
 #import "BITRectangleImageAnnotation.h"
 
+#if HOCKEYSDK_FEATURE_FEEDBACK
+
 @interface BITRectangleImageAnnotation()
 
 @property (nonatomic, strong) CAShapeLayer *shapeLayer;
@@ -84,3 +86,5 @@
 
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_FEEDBACK */

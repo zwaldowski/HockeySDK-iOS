@@ -28,7 +28,10 @@
 
 #import "BITCrashMetaData.h"
 
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 @implementation BITCrashMetaData
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

@@ -27,9 +27,14 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 @class BITCrashManager;
 @class BITHockeyAttachment;
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  The `BITCrashManagerDelegate` formal protocol defines methods further configuring
@@ -91,7 +96,7 @@
  @warning When returning a non nil value, crash reports are not anonymous any
  more and the alerts will not show the "anonymous" word!
  */
--(NSString *)userNameForCrashManager:(BITCrashManager *)crashManager DEPRECATED_ATTRIBUTE;
+-(nullable NSString *)userNameForCrashManager:(BITCrashManager *)crashManager DEPRECATED_ATTRIBUTE;
 
 
 
@@ -105,7 +110,7 @@
  @warning When returning a non nil value, crash reports are not anonymous any
  more and the alerts will not show the "anonymous" word!
  */
--(NSString *)userEmailForCrashManager:(BITCrashManager *)crashManager DEPRECATED_ATTRIBUTE;
+-(nullable NSString *)userEmailForCrashManager:(BITCrashManager *)crashManager DEPRECATED_ATTRIBUTE;
 
 
 
@@ -181,3 +186,7 @@
 -(BOOL)considerAppNotTerminatedCleanlyReportForCrashManager:(BITCrashManager *)crashManager;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

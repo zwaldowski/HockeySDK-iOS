@@ -27,23 +27,12 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "HockeySDKFeatureConfig.h"
-
-#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 #import "BITCrashManagerDelegate.h"
-#endif
-
-#if HOCKEYSDK_FEATURE_UPDATES
 #import "BITUpdateManagerDelegate.h"
-#endif
-
-#if HOCKEYSDK_FEATURE_FEEDBACK
 #import "BITFeedbackManagerDelegate.h"
-#endif
-
-#if HOCKEYSDK_FEATURE_AUTHENTICATOR
 #import "BITAuthenticator.h"
-#endif
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class BITHockeyManager;
 @class BITHockeyBaseManager;
@@ -153,7 +142,7 @@
  @see userEmailForHockeyManager:componentManager:
  @see [BITHockeyManager userID]
  */
-- (NSString *)userIDForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;
+- (nullable NSString *)userIDForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;
 
 
 /** Return the user name that should used in the SDK components
@@ -189,7 +178,7 @@
  @see userEmailForHockeyManager:componentManager:
  @see [BITHockeyManager userName]
  */
-- (NSString *)userNameForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;
+- (nullable NSString *)userNameForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;
 
 
 /** Return the users email address that should used in the SDK components
@@ -225,6 +214,8 @@
  @see userNameForHockeyManager:componentManager:
  @see [BITHockeyManager userEmail]
  */
-- (NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;
+- (nullable NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;
 
 @end
+
+NS_ASSUME_NONNULL_END

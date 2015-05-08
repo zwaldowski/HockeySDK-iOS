@@ -27,186 +27,36 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef HockeySDK_h
-#define HockeySDK_h
+#import <HockeySDK/HockeySDKFeatureConfig.h>
+#import <HockeySDK/BITTypes.h>
 
-#import "HockeySDKFeatureConfig.h"
+#import <HockeySDK/BITHockeyManager.h>
+#import <HockeySDK/BITHockeyManagerDelegate.h>
+#import <HockeySDK/BITHockeyAttachment.h>
 
-#import "BITHockeyManager.h"
-#import "BITHockeyManagerDelegate.h"
+// Handle crash reports
+#import <HockeySDK/BITCrashManager.h>
+#import <HockeySDK/BITCrashAttachment.h>
+#import <HockeySDK/BITCrashManagerDelegate.h>
+#import <HockeySDK/BITCrashDetails.h>
+#import <HockeySDK/BITCrashMetaData.h>
 
-#if HOCKEYSDK_FEATURE_CRASH_REPORTER || HOCKEYSDK_FEATURE_FEEDBACK
-#import "BITHockeyAttachment.h"
-#endif
+// Handle in-app updates for Ad-Hoc and Enterprise builds
+#import <HockeySDK/BITUpdateManager.h>
+#import <HockeySDK/BITUpdateManagerDelegate.h>
+#import <HockeySDK/BITUpdateViewController.h>
 
-#if HOCKEYSDK_FEATURE_CRASH_REPORTER
-#import "BITCrashManager.h"
-#import "BITCrashAttachment.h"
-#import "BITCrashManagerDelegate.h"
-#import "BITCrashDetails.h"
-#import "BITCrashMetaData.h"
-#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */
+// Informing the user about new updates pending in the App Store
+#import <HockeySDK/BITStoreUpdateManager.h>
+#import <HockeySDK/BITStoreUpdateManagerDelegate.h>
 
-#if HOCKEYSDK_FEATURE_UPDATES
-#import "BITUpdateManager.h"
-#import "BITUpdateManagerDelegate.h"
-#import "BITUpdateViewController.h"
-#endif /* HOCKEYSDK_FEATURE_UPDATES */
+// Managing user feedback
+#import <HockeySDK/BITFeedbackManager.h>
+#import <HockeySDK/BITFeedbackManagerDelegate.h>
+#import <HockeySDK/BITFeedbackActivity.h>
+#import <HockeySDK/BITFeedbackComposeViewController.h>
+#import <HockeySDK/BITFeedbackComposeViewControllerDelegate.h>
+#import <HockeySDK/BITFeedbackListViewController.h>
 
-#if HOCKEYSDK_FEATURE_STORE_UPDATES
-#import "BITStoreUpdateManager.h"
-#import "BITStoreUpdateManagerDelegate.h"
-#endif /* HOCKEYSDK_FEATURE_STORE_UPDATES */
-
-#if HOCKEYSDK_FEATURE_FEEDBACK
-#import "BITFeedbackManager.h"
-#import "BITFeedbackManagerDelegate.h"
-#import "BITFeedbackActivity.h"
-#import "BITFeedbackComposeViewController.h"
-#import "BITFeedbackComposeViewControllerDelegate.h"
-#import "BITFeedbackListViewController.h"
-#endif /* HOCKEYSDK_FEATURE_FEEDBACK */
-
-#if HOCKEYSDK_FEATURE_AUTHENTICATOR
-#import "BITAuthenticator.h"
-#endif
-
-// Notification message which HockeyManager is listening to, to retry requesting updated from the server
-#define BITHockeyNetworkDidBecomeReachableNotification @"BITHockeyNetworkDidBecomeReachable"
-
-
-/**
- *  HockeySDK Crash Reporter error domain
- */
-typedef NS_ENUM (NSInteger, BITCrashErrorReason) {
-  /**
-   *  Unknown error
-   */
-  BITCrashErrorUnknown,
-  /**
-   *  API Server rejected app version
-   */
-  BITCrashAPIAppVersionRejected,
-  /**
-   *  API Server returned empty response
-   */
-  BITCrashAPIReceivedEmptyResponse,
-  /**
-   *  Connection error with status code
-   */
-  BITCrashAPIErrorWithStatusCode
-};
-extern NSString *const __attribute__((unused)) kBITCrashErrorDomain;
-
-/**
- *  HockeySDK Update error domain
- */
-typedef NS_ENUM (NSInteger, BITUpdateErrorReason) {
-  /**
-   *  Unknown error
-   */
-  BITUpdateErrorUnknown,
-  /**
-   *  API Server returned invalid status
-   */
-  BITUpdateAPIServerReturnedInvalidStatus,
-  /**
-   *  API Server returned invalid data
-   */
-  BITUpdateAPIServerReturnedInvalidData,
-  /**
-   *  API Server returned empty response
-   */
-  BITUpdateAPIServerReturnedEmptyResponse,
-  /**
-   *  Authorization secret missing
-   */
-  BITUpdateAPIClientAuthorizationMissingSecret,
-  /**
-   *  No internet connection
-   */
-  BITUpdateAPIClientCannotCreateConnection
-};
-extern NSString *const __attribute__((unused)) kBITUpdateErrorDomain;
-
-
-/**
- *  HockeySDK Feedback error domain
- */
-typedef NS_ENUM(NSInteger, BITFeedbackErrorReason) {
-  /**
-   *  Unknown error
-   */
-  BITFeedbackErrorUnknown,
-  /**
-   *  API Server returned invalid status
-   */
-  BITFeedbackAPIServerReturnedInvalidStatus,
-  /**
-   *  API Server returned invalid data
-   */
-  BITFeedbackAPIServerReturnedInvalidData,
-  /**
-   *  API Server returned empty response
-   */
-  BITFeedbackAPIServerReturnedEmptyResponse,
-  /**
-   *  Authorization secret missing
-   */
-  BITFeedbackAPIClientAuthorizationMissingSecret,
-  /**
-   *  No internet connection
-   */
-  BITFeedbackAPIClientCannotCreateConnection
-};
-extern NSString *const __attribute__((unused)) kBITFeedbackErrorDomain;
-
-/**
- *  HockeySDK Authenticator error domain
- */
-typedef NS_ENUM(NSInteger, BITAuthenticatorReason) {
-  /**
-   *  Unknown error
-   */
-  BITAuthenticatorErrorUnknown,
-  /**
-   *  Network error
-   */
-  BITAuthenticatorNetworkError,
-  
-  /**
-   *  API Server returned invalid response
-   */
-  BITAuthenticatorAPIServerReturnedInvalidResponse,
-  /**
-   *  Not Authorized
-   */
-  BITAuthenticatorNotAuthorized,
-  /**
-   *  Unknown Application ID (configuration error)
-   */
-  BITAuthenticatorUnknownApplicationID,
-  /**
-   *  Authorization secret missing
-   */
-  BITAuthenticatorAuthorizationSecretMissing,
-  /**
-   *  Not yet identified
-   */
-  BITAuthenticatorNotIdentified,
-};
-extern NSString *const __attribute__((unused)) kBITAuthenticatorErrorDomain;
-
-/**
- *  HockeySDK global error domain
- */
-typedef NS_ENUM(NSInteger, BITHockeyErrorReason) {
-  /**
-   *  Unknown error
-   */
-  BITHockeyErrorUnknown
-};
-extern NSString *const __attribute__((unused)) kBITHockeyErrorDomain;
-
-
-#endif
+// Authenticated installations for Ad-Hoc and Enterprise builds
+#import <HockeySDK/BITAuthenticator.h>

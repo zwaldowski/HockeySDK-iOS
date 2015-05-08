@@ -31,7 +31,6 @@
 
 #import "BITStoreButton.h"
 #import "HockeySDKPrivate.h"
-#import <QuartzCore/QuartzCore.h>
 
 #define BIT_MIN_HEIGHT 25.0f
 #define BIT_MAX_WIDTH 120.0f

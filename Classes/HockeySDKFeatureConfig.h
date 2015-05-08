@@ -26,9 +26,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef HockeySDK_HockeySDKFeatureConfig_h
-#define HockeySDK_HockeySDKFeatureConfig_h
-
+#pragma once
 
 /**
  * If true, include support for handling crash reports
@@ -79,5 +77,4 @@
 #    define HOCKEYSDK_FEATURE_UPDATES 1
 #endif /* HOCKEYSDK_FEATURE_UPDATES */
 
-
-#endif /* HockeySDK_HockeySDKFeatureConfig_h */
+#define HOCKEYSDK_FEATURES_ANY (HOCKEYSDK_FEATURE_CRASH_REPORTER || HOCKEYSDK_FEATURE_FEEDBACK || HOCKEYSDK_FEATURE_UPDATES || HOCKEYSDK_FEATURE_AUTHENTICATOR || HOCKEYSDK_FEATURE_STORE_UPDATES)

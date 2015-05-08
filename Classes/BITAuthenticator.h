@@ -27,8 +27,13 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
 
 #import "BITHockeyBaseManager.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Identification Types
@@ -196,7 +201,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  *
  * @see identificationType
  */
-@property (nonatomic, copy) NSString *authenticationSecret;
+@property (nonatomic, copy, nullable) NSString *authenticationSecret;
 
 
 #pragma mark - Device based identification
@@ -218,7 +223,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  * URL to query the device's id via external webpage
  * Built with the baseURL set in `webpageURL`.
  */
-- (NSURL*) deviceAuthenticationURL;
+@property (nonatomic, readonly, copy, nullable) NSURL *deviceAuthenticationURL;
 
 /**
  * The url-scheme used to identify via `BITAuthenticatorIdentificationTypeDevice`
@@ -230,7 +235,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  * @see identificationType
  * @see handleOpenURL:sourceApplication:annotation:
  */
-@property (nonatomic, strong) NSString *urlScheme;
+@property (nonatomic, copy, nullable) NSString *urlScheme;
 
 /**
  Should be used by the app-delegate to forward handle application:openURL:sourceApplication:annotation: calls.
@@ -270,8 +275,8 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  @see urlScheme
  */
 - (BOOL) handleOpenURL:(NSURL *) url
-     sourceApplication:(NSString *) sourceApplication
-            annotation:(id) annotation;
+     sourceApplication:(nullable NSString *) sourceApplication
+            annotation:(nullable id) annotation;
 
 #pragma mark - Authentication
 
@@ -315,7 +320,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  *
  * @param completion Block being executed once identification completed
  */
-- (void) identifyWithCompletion:(void(^)(BOOL identified, NSError *error)) completion;
+- (void) identifyWithCompletion:(void(^__nullable)(BOOL identified, NSError *__nullable error)) completion;
 
 /**
  * Returns YES if this app is identified according to the setting in `identificationType`.
@@ -344,7 +349,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  *
  * @param completion Block being executed once validation completed
  */
-- (void) validateWithCompletion:(void(^)(BOOL validated, NSError *error)) completion;
+- (void) validateWithCompletion:(void(^)(BOOL validated, NSError *__nullable error)) completion;
 
 /**
  * Indicates if this installation is validated.
@@ -362,7 +367,7 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  *
  * @see identificationType
  */
-- (NSString*) publicInstallationIdentifier;
+@property (readonly, copy) NSString *publicInstallationIdentifier;
 @end
 
 #pragma mark - Protocol
@@ -382,4 +387,9 @@ typedef NS_ENUM(NSUInteger, BITAuthenticatorAppRestrictionEnforcementFrequency) 
  *
  */
 - (void) authenticator:(BITAuthenticator *)authenticator willShowAuthenticationController:(UIViewController*) viewController;
+
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_AUTHENTICATOR */

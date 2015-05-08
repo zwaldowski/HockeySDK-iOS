@@ -27,18 +27,14 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "HockeySDK.h"
-#import "HockeySDKPrivate.h"
+#import "BITHockeyManager.h"
 
-#if HOCKEYSDK_FEATURE_CRASH_REPORTER || HOCKEYSDK_FEATURE_FEEDBACK || HOCKEYSDK_FEATURE_UPDATES || HOCKEYSDK_FEATURE_AUTHENTICATOR || HOCKEYSDK_FEATURE_STORE_UPDATES
+#import "HockeySDKPrivate.h"
 #import "BITHockeyBaseManagerPrivate.h"
-#endif
 
 #import "BITHockeyHelper.h"
 #import "BITHockeyAppClient.h"
 #import "BITKeychainUtils.h"
-
-#include <stdint.h>
 
 typedef struct {
   uint8_t       info_version;

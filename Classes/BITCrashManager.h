@@ -29,12 +29,17 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 #import "BITHockeyBaseManager.h"
+#import "BITCrashManagerDelegate.h"
+
+NS_ASSUME_NONNULL_BEGIN
 
 @class BITCrashDetails;
 @class BITCrashMetaData;
-
 
 /**
  * Custom block that handles the alert that prompts the user whether he wants to send crash reports
@@ -70,7 +75,7 @@ typedef NS_ENUM(NSUInteger, BITCrashManagerStatus) {
  * @see `BITCrashManagerCallbacks`
  * @see `[BITCrashManager setCrashCallbacks:]`
  */
-typedef void (*BITCrashManagerPostCrashSignalCallback)(void *context);
+typedef void (*BITCrashManagerPostCrashSignalCallback)(void * __nullable context);
 
 /**
  * This structure contains callbacks supported by `BITCrashManager` to allow the host application to perform
@@ -81,7 +86,7 @@ typedef void (*BITCrashManagerPostCrashSignalCallback)(void *context);
  */
 typedef struct BITCrashManagerCallbacks {
   /** An arbitrary user-supplied context value. This value may be NULL. */
-  void *context;
+  void *__nullable context;
   
   /**
    * The callback used to report caught signal information.
@@ -107,9 +112,6 @@ typedef NS_ENUM(NSUInteger, BITCrashManagerUserInput) {
   BITCrashManagerUserInputAlwaysSend = 2
   
 };
-
-
-@protocol BITCrashManagerDelegate;
 
 /**
  The crash reporting module.
@@ -333,7 +335,7 @@ typedef NS_ENUM(NSUInteger, BITCrashManagerUserInput) {
  @see BITCrashManagerUserInput
  @see BITCrashMetaData
  */
-- (BOOL)handleUserInput:(BITCrashManagerUserInput)userInput withUserProvidedMetaData:(BITCrashMetaData *)userProvidedMetaData;
+- (BOOL)handleUserInput:(BITCrashManagerUserInput)userInput withUserProvidedMetaData:(nullable BITCrashMetaData *)userProvidedMetaData;
 
 /**
  Lets you set a custom block which handles showing a custom UI and asking the user
@@ -353,12 +355,12 @@ typedef NS_ENUM(NSUInteger, BITCrashManagerUserInput) {
  
  @warning This needs to be set before calling `[BITHockeyManager startManager]`!
  */
-- (void)setAlertViewHandler:(BITCustomAlertViewHandler)alertViewHandler;
+- (void)setAlertViewHandler:(nullable BITCustomAlertViewHandler)alertViewHandler;
 
 /**
  * Provides details about the crash that occurred in the last app session
  */
-@property (nonatomic, readonly) BITCrashDetails *lastSessionCrashDetails;
+@property (nonatomic, readonly, nullable) BITCrashDetails *lastSessionCrashDetails;
 
 
 /**
@@ -415,7 +417,7 @@ typedef NS_ENUM(NSUInteger, BITCrashManagerUserInput) {
  *
  *  @return BOOL if the debugger is attached on app startup
  */
-- (BOOL)isDebuggerAttached;
+@property (getter=isDebuggerAttached, readonly) BOOL debuggerAttached;
 
 
 /**
@@ -440,3 +442,7 @@ typedef NS_ENUM(NSUInteger, BITCrashManagerUserInput) {
 @property (nonatomic, readonly) NSTimeInterval timeintervalCrashInLastSessionOccured DEPRECATED_MSG_ATTRIBUTE("Use the properly spelled property `timeIntervalCrashInLastSessionOccurred` instead.");
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

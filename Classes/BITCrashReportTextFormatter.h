@@ -33,6 +33,9 @@
 
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 @class PLCrashReport;
 
@@ -64,8 +67,7 @@ typedef NS_ENUM (NSInteger, BITBinaryImageType) {
 };
 
 
-@interface BITCrashReportTextFormatter : NSObject {
-}
+@interface BITCrashReportTextFormatter : NSObject
 
 + (NSString *)stringValueForCrashReport:(PLCrashReport *)report crashReporterKey:(NSString *)crashReporterKey;
 + (NSArray *)arrayOfAppUUIDsForCrashReport:(PLCrashReport *)report;
@@ -73,3 +75,5 @@ typedef NS_ENUM (NSInteger, BITBinaryImageType) {
 + (BITBinaryImageType)bit_imageTypeForImagePath:(NSString *)imagePath processPath:(NSString *)processPath;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_CRASH_REPORTER */

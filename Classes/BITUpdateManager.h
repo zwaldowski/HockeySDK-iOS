@@ -28,9 +28,12 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_UPDATES
 
 #import "BITHockeyBaseManager.h"
-
 
 /**
  *  Update check interval
@@ -55,6 +58,8 @@ typedef NS_ENUM (NSUInteger, BITUpdateSetting) {
 @class BITAppVersionMetaInfo;
 @class BITUpdateViewController;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  The update manager module.
  
@@ -72,7 +77,7 @@ typedef NS_ENUM (NSUInteger, BITUpdateSetting) {
  
  */
 
-@interface BITUpdateManager : BITHockeyBaseManager <UIAlertViewDelegate>
+@interface BITUpdateManager : BITHockeyBaseManager
 
 ///-----------------------------------------------------------------------------
 /// @name Update Checking
@@ -193,7 +198,7 @@ typedef NS_ENUM (NSUInteger, BITUpdateSetting) {
  @see [BITUpdateManagerDelegate didDisplayExpiryAlertForUpdateManager:]
  @warning This only works when using Ad-Hoc provisioning profiles!
  */
-@property (nonatomic, strong) NSDate *expiryDate;
+@property (nonatomic, nullable) NSDate *expiryDate;
 
 /**
  Disable the update check button from expiry screen or alerts
@@ -235,3 +240,7 @@ typedef NS_ENUM (NSUInteger, BITUpdateSetting) {
 
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif

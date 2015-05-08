@@ -27,6 +27,11 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURES_ANY
+
+NS_ASSUME_NONNULL_BEGIN
 
 @interface BITHockeyBaseViewController : UITableViewController
 
@@ -36,3 +41,7 @@
 - (instancetype)initWithStyle:(UITableViewStyle)style modal:(BOOL)modal;
 
 @end
+
+NS_ASSUME_NONNULL_END
+
+#endif /* HOCKEYSDK_FEATURES_ANY */

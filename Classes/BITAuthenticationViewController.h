@@ -27,9 +27,38 @@
  */
 
 #import <UIKit/UIKit.h>
-@protocol BITAuthenticationViewControllerDelegate;
+#import "HockeySDKFeatureConfig.h"
+
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
+
+@class BITAuthenticationViewController;
 @class BITAuthenticator;
 @class BITHockeyAppClient;
+
+/**
+ *  BITAuthenticationViewController protocol
+ */
+@protocol BITAuthenticationViewControllerDelegate<NSObject>
+
+- (void) authenticationViewControllerDidTapWebButton:(UIViewController*) viewController;
+
+/**
+ *	called when the user wants to login
+ *
+ *	@param	viewController	the delegating view controller
+ *	@param	email	the content of the email-field
+ *	@param	password	the content of the password-field (if existent)
+ *  @param  completion Must be called by the delegate once the auth-task completed
+ *                     This view controller shows an activity-indicator in between and blocks
+ *                     the UI. if succeeded is NO, it shows an alertView presenting the error
+ *                     given by the completion block
+ */
+- (void) authenticationViewController:(UIViewController*) viewController
+        handleAuthenticationWithEmail:(NSString*) email
+                             password:(NSString*) password
+                           completion:(void(^)(BOOL succeeded, NSError *error)) completion;
+
+@end
 
 /**
  *  View controller handling user interaction for `BITAuthenticator`
@@ -68,27 +97,4 @@
 @property (nonatomic, copy) NSString* email;
 @end
 
-/**
- *  BITAuthenticationViewController protocol
- */
-@protocol BITAuthenticationViewControllerDelegate<NSObject>
-
-- (void) authenticationViewControllerDidTapWebButton:(UIViewController*) viewController;
-
-/**
- *	called when the user wants to login
- *
- *	@param	viewController	the delegating view controller
- *	@param	email	the content of the email-field
- *	@param	password	the content of the password-field (if existent)
- *  @param  completion Must be called by the delegate once the auth-task completed
- *                     This view controller shows an activity-indicator in between and blocks
- *                     the UI. if succeeded is NO, it shows an alertView presenting the error
- *                     given by the completion block
- */
-- (void) authenticationViewController:(UIViewController*) viewController
-        handleAuthenticationWithEmail:(NSString*) email
-                             password:(NSString*) password
-                           completion:(void(^)(BOOL succeeded, NSError *error)) completion;
-
-@end
+#endif /* HOCKEYSDK_FEATURE_AUTHENTICATOR */

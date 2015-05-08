@@ -27,7 +27,7 @@
  */
 
 
-#import "HockeySDK.h"
+#import "BITFeedbackManager.h"
 
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
@@ -35,13 +35,15 @@
 
 #import "HockeySDKPrivate.h"
 
-#import "BITFeedbackManager.h"
 #import "BITFeedbackMessageAttachment.h"
 #import "BITFeedbackManagerPrivate.h"
 #import "BITHockeyBaseManagerPrivate.h"
 
 #import "BITHockeyHelper.h"
 #import "BITHockeyAppClient.h"
+
+#import "BITFeedbackListViewController.h"
+#import "BITFeedbackComposeViewController.h"
 
 #define kBITFeedbackUserDataAsked   @"HockeyFeedbackUserDataAsked"
 #define kBITFeedbackDateOfLastCheck	@"HockeyFeedbackDateOfLastCheck"
@@ -53,6 +55,8 @@
 #define kBITFeedbackLastMessageID   @"HockeyFeedbackLastMessageID"
 #define kBITFeedbackAppID           @"HockeyFeedbackAppID"
 
+NSString *const BITHockeyFeedbackMessagesLoadingStarted = @"BITHockeyFeedbackMessagesLoadingStarted";
+NSString *const BITHockeyFeedbackMessagesLoadingFinished = @"BITHockeyFeedbackMessagesLoadingFinished";
 NSString *const kBITFeedbackUpdateAttachmentThumbnail = @"BITFeedbackUpdateAttachmentThumbnail";
 
 @interface BITFeedbackManager()<UIGestureRecognizerDelegate>

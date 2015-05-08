@@ -29,9 +29,12 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "HockeySDKFeatureConfig.h"
 
-@interface BITAppVersionMetaInfo : NSObject {
-}
+#if HOCKEYSDK_FEATURE_UPDATES
+
+@interface BITAppVersionMetaInfo : NSObject
+
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *version;
 @property (nonatomic, copy) NSString *shortVersion;
@@ -56,3 +59,5 @@
 + (BITAppVersionMetaInfo *)appVersionMetaInfoFromDict:(NSDictionary *)dict;
 
 @end
+
+#endif /* HOCKEYSDK_FEATURE_UPDATES */

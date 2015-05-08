@@ -27,7 +27,7 @@
  */
 
 
-#import "HockeySDK.h"
+#import "BITFeedbackComposeViewController.h"
 
 #if HOCKEYSDK_FEATURE_FEEDBACK
 
@@ -35,7 +35,6 @@
 
 #import "BITFeedbackManagerPrivate.h"
 #import "BITFeedbackMessageAttachment.h"
-#import "BITFeedbackComposeViewController.h"
 #import "BITFeedbackUserDataViewController.h"
 
 #import "BITHockeyBaseManagerPrivate.h"
