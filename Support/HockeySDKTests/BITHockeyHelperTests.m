@@ -14,7 +14,7 @@
 #define MOCKITO_SHORTHAND
 #import <OCMockitoIOS/OCMockitoIOS.h>
 
-#import "HockeySDK.h"
+#import <HockeySDK/HockeySDK.h>
 #import "BITHockeyHelper.h"
 #import "BITKeychainUtils.h"
 

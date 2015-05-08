@@ -14,7 +14,7 @@
 #define MOCKITO_SHORTHAND
 #import <OCMockitoIOS/OCMockitoIOS.h>
 
-#import "HockeySDK.h"
+#import <HockeySDK/HockeySDK.h>
 #import "BITKeychainUtils.h"
 
 @interface BITKeychainUtilsTests : XCTestCase {

@@ -16,14 +16,13 @@
 #define MOCKITO_SHORTHAND
 #import <OCMockitoIOS/OCMockitoIOS.h>
 
-#import "HockeySDKFeatureConfig.h"
-#import "BITStoreUpdateManager.h"
+#import <HockeySDK/HockeySDK.h>
 #import "BITStoreUpdateManagerPrivate.h"
-#import "BITHockeyBaseManager.h"
 #import "BITHockeyBaseManagerPrivate.h"
 
 #import "BITTestHelper.h"
 
+#if HOCKEYSDK_FEATURE_STORE_UPDATES
 
 @interface BITStoreUpdateManagerTests : XCTestCase
 
@@ -317,3 +316,5 @@
 }
 
 @end
+
+#endif

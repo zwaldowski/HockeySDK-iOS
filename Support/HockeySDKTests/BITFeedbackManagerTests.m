@@ -14,14 +14,14 @@
 #define MOCKITO_SHORTHAND
 #import <OCMockitoIOS/OCMockitoIOS.h>
 
-#import "HockeySDK.h"
+#import <HockeySDK/HockeySDK.h>
 #import "HockeySDKPrivate.h"
-#import "BITFeedbackManager.h"
 #import "BITFeedbackManagerPrivate.h"
-#import "BITHockeyBaseManager.h"
 #import "BITHockeyBaseManagerPrivate.h"
 
 #import "BITTestHelper.h"
+
+#if HOCKEYSDK_FEATURE_FEEDBACK
 
 @interface BITFeedbackManagerTests : XCTestCase
 
@@ -214,3 +214,5 @@
 
 
 @end
+
+#endif

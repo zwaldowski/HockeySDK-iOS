@@ -14,12 +14,14 @@
 #define MOCKITO_SHORTHAND
 #import <OCMockitoIOS/OCMockitoIOS.h>
 
-#import "HockeySDK.h"
-#import "BITAuthenticator.h"
+#import <HockeySDK/HockeySDK.h>
 #import "BITAuthenticator_Private.h"
 #import "BITHTTPOperation.h"
-#import "BITTestHelper.h"
 #import "BITHockeyAppClient.h"
+
+#import "BITTestHelper.h"
+
+#if HOCKEYSDK_FEATURE_AUTHENTICATOR
 
 @interface MyDevice : NSObject
 - (NSString*) uniqueIdentifier;
@@ -330,3 +332,5 @@ static void *kInstallationIdentification = &kInstallationIdentification;
 }
 
 @end
+
+#endif

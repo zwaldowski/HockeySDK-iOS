@@ -14,14 +14,14 @@
 #define MOCKITO_SHORTHAND
 #import <OCMockitoIOS/OCMockitoIOS.h>
 
-#import "HockeySDK.h"
+#import <HockeySDK/HockeySDK.h>
 #import "HockeySDKPrivate.h"
-#import "BITCrashManager.h"
 #import "BITCrashManagerPrivate.h"
-#import "BITHockeyBaseManager.h"
 #import "BITHockeyBaseManagerPrivate.h"
 
 #import "BITTestHelper.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 #define kBITCrashMetaAttachment @"BITCrashMetaAttachment"
 
@@ -293,3 +293,5 @@
 }
 
 @end
+
+#endif

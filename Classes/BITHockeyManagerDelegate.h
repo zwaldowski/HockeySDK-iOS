@@ -26,7 +26,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "BITCrashManagerDelegate.h"
 #import "BITUpdateManagerDelegate.h"
 #import "BITFeedbackManagerDelegate.h"

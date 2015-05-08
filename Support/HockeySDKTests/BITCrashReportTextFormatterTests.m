@@ -7,7 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <HockeySDK/HockeySDK.h>
 #import "BITCrashReportTextFormatter.h"
+
+#if HOCKEYSDK_FEATURE_CRASH_REPORTER
 
 @interface BITCrashReportTextFormatterTests : XCTestCase
 
@@ -194,3 +197,5 @@
 
 
 @end
+
+#endif
